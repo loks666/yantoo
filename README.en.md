@@ -1,98 +1,45 @@
-<p align="right">
-    <a href="./README.md">中文</a> | <strong>English</strong>
-</p>
+选择 Python 的 FastAPI 还是 Golang 的 Gin 框架取决于几个因素，包括你的团队的技术栈、项目需求和你对两种语言的熟悉程度。以下是两者的比较，帮助你做出决定：
 
-<p align="center">
-  <a href="https://github.com/songquanpeng/gin-template"><img src="https://raw.githubusercontent.com/songquanpeng/gin-template/main/web/public/logo.png" width="150" height="150" alt="gin-template logo"></a>
-</p>
+### FastAPI（Python）
 
-<div align="center">
+**优点：**
+1. **易于使用和学习**：Python 是一种非常易于学习和使用的语言，适合快速开发和原型设计。
+2. **高性能**：FastAPI 使用 Starlette 和 Pydantic，能够提供非常高的性能，接近 Node.js 和 Go。
+3. **丰富的生态系统**：Python 拥有丰富的第三方库和包，可以轻松地集成各种功能。
+4. **自动生成文档**：FastAPI 自动生成 OpenAPI 和 JSON Schema 文档，方便前后端开发人员的协作。
+5. **异步支持**：内置对异步编程的支持，使其在处理 I/O 密集型任务时表现良好。
 
-# Gin Template
+**缺点：**
+1. **性能可能不及 Go**：尽管 FastAPI 性能优异，但在某些高并发场景下，可能不如 Go 效率。
+2. **部署可能稍复杂**：Python 的运行环境配置可能比 Go 更加复杂，特别是在需要考虑依赖项时。
 
-_✨ Template for Gin & React projects ✨_
+### Gin（Golang）
 
-</div>
+**优点：**
+1. **高性能**：Go 语言编译后的二进制文件运行效率非常高，适合高并发、高性能的应用场景。
+2. **部署简单**：Go 编译后的二进制文件无需额外依赖，部署非常简单，适合 Docker 化和微服务架构。
+3. **强类型语言**：Go 是强类型语言，编译期间可以捕获很多错误，增加代码的可靠性和可维护性。
+4. **并发编程支持**：Go 语言内置 goroutines 和 channels，提供了强大的并发编程能力。
 
-<p align="center">
-  <a href="https://raw.githubusercontent.com/songquanpeng/gin-template/main/LICENSE">
-    <img src="https://img.shields.io/github/license/songquanpeng/gin-template?color=brightgreen" alt="license">
-  </a>
-  <a href="https://github.com/songquanpeng/gin-template/releases/latest">
-    <img src="https://img.shields.io/github/v/release/songquanpeng/gin-template?color=brightgreen&include_prereleases" alt="release">
-  </a>
-  <a href="https://hub.docker.com/repository/docker/justsong/gin-template">
-    <img src="https://img.shields.io/docker/pulls/justsong/gin-template?color=brightgreen" alt="docker pull">
-  </a>
-  <a href="https://github.com/songquanpeng/gin-template/releases/latest">
-    <img src="https://img.shields.io/github/downloads/songquanpeng/gin-template/total?color=brightgreen&include_prereleases" alt="release">
-  </a>
-  <a href="https://goreportcard.com/report/github.com/songquanpeng/go-file">
-    <img src="https://goreportcard.com/badge/github.com/songquanpeng/gin-template" alt="GoReportCard">
-  </a>
-</p>
+**缺点：**
+1. **学习曲线较陡**：相较于 Python，Go 的语法和特性可能需要更多的学习时间。
+2. **生态系统不如 Python 丰富**：虽然 Go 的生态系统在不断成长，但与 Python 相比，第三方库和框架的数量和成熟度稍显不足。
 
-<p align="center">
-  <a href="https://github.com/songquanpeng/gin-template/releases">Download</a>
-  ·
-  <a href="https://github.com/songquanpeng/gin-template/blob/main/README.en.md#deployment">Tutorial</a>
-  ·
-  <a href="https://github.com/songquanpeng/gin-template/issues">Feedback</a>
-  ·
-  <a href="https://gin-template.vercel.app/">Demo</a>
-</p>
+### 选择建议
 
-## Features
-+ [x] Built-in user management.
-+ [x] Built-in file management.
-+ [x] [GitHub OAuth](https://github.com/settings/applications/new).
-+ [x] WeChat official account authorization (need [wechat-server](https://github.com/songquanpeng/wechat-server)).
-+ [x] Email verification & password reset.
-+ [x] Request rate limiting.
-+ [x] Static files caching.
-+ [x] Mobile friendly UI.
-+ [x] Token based authorization.
-+ [x] Use GitHub Actions to build releases & Docker images.
-+ [x] Cloudflare Turnstile user validation.
+如果你的团队更熟悉 Python，并且项目需要快速开发和迭代，那么选择 FastAPI 可能更合适。它能够让你在短时间内构建出功能齐全的应用，并且具有很好的性能。
 
-## Deployment
-### Manual deployment
-1. Download built binary from [GitHub Releases](https://github.com/songquanpeng/gin-template/releases/latest) or build from source:
-   ```shell
-   git clone https://github.com/songquanpeng/gin-template.git
-   go mod download
-   go build -ldflags "-s -w" -o gin-template
-   ````
-2. Run it:
-   ```shell
-   chmod u+x gin-template
-   ./gin-template --port 3000 --log-dir ./logs
-   ```
-3. Visit [http://localhost:3000/](http://localhost:3000/) and login. The username for the initial account is `root` and the password is `123456`.
+如果你的项目对性能要求极高，并且你的团队有 Go 语言的经验或愿意学习，那么选择 Gin 可能会更好。它的高性能和简单的部署方式非常适合需要处理大量并发请求的应用。
 
-### Deploy with Docker
-Execute: `docker run -d --restart always -p 3000:3000 -v /home/ubuntu/data/gin-template:/data -v /etc/ssl/certs:/etc/ssl/certs:ro justsong/gin-template`
+### 总结表格
 
-Data will be saved in `/home/ubuntu/data/gin-template`.
+| 特性         | FastAPI (Python)                                | Gin (Golang)                             |
+| ------------ | ----------------------------------------------- | ---------------------------------------- |
+| 学习曲线     | 较平缓，适合快速上手                            | 较陡峭，需要更多学习时间                 |
+| 性能         | 高，但在极高并发场景下可能稍逊于 Go              | 非常高，适合高并发高性能应用             |
+| 部署         | 较复杂，需要配置 Python 环境和依赖               | 简单，编译成二进制文件无需额外依赖       |
+| 生态系统     | 非常丰富，拥有大量第三方库和工具                 | 较丰富，但不如 Python                    |
+| 文档生成     | 自动生成 OpenAPI 和 JSON Schema 文档             | 需要额外工具或手动编写                   |
+| 并发支持     | 内置异步支持，适合 I/O 密集型任务                | 内置 goroutines 和 channels，强大并发支持|
 
-## Configurations
-The system works out of the box.
-
-You can configure the system by set environment variables or specify command line arguments.
-
-After the system starts, use `root` user to log in to the system and do further configuration.
-
-### Environment Variables
-1. `REDIS_CONN_STRING`: when set, Redis will be used as the storage for request rate limitation instead of memory storage.
-   + Example: `REDIS_CONN_STRING=redis://default:redispw@localhost:49153`
-2. `SESSION_SECRET`: when set, a fixed session key will be used so that the logged-in users' cookie remains valid across system reboots.
-   + Example: `SESSION_SECRET=random_string`
-3. `SQL_DSN`: when set, the target SQL database will be used instead of SQLite.
-   + Example: `SQL_DSN=root:123456@tcp(localhost:3306)/gin-template`
-
-### Command line Arguments
-1. `--port <port_number>`: specify the port number, the default value is `3000`.
-   + Example: `--port 3000`
-2. `--log-dir <log_dir>`: specify the log dir, if not set, the log won't be saved.
-   + Example: `--log-dir ./logs`
-3. `--version`: print the version and exit.
+希望这些信息能帮助你做出决策。如果还有其他问题，欢迎随时提问。

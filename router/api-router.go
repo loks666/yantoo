@@ -2,8 +2,11 @@ package router
 
 import (
 	"gin-template/controller"
+	_ "gin-template/docs" // 引入生成的文档
 	"gin-template/middleware"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files" // 使用正确的包路径
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func SetApiRouter(router *gin.Engine) {
@@ -63,4 +66,7 @@ func SetApiRouter(router *gin.Engine) {
 			fileRoute.DELETE("/:id", controller.DeleteFile)
 		}
 	}
+
+	// 注册 Swagger 路由
+	router.GET("/doc/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 }

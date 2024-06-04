@@ -23,7 +23,7 @@ var indexPage []byte
 
 func main() {
 	common.SetupGinLog()
-	common.SysLog("Gin Template " + common.Version + " started")
+	common.SysLog("颜途AI " + common.Version + " 启动...")
 	if os.Getenv("GIN_MODE") != "debug" {
 		gin.SetMode(gin.ReleaseMode)
 	}
