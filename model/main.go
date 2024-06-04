@@ -2,9 +2,11 @@ package model
 
 import (
 	"gin-template/common"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"log"
 	"os"
 )
 
@@ -37,6 +39,11 @@ func CountTable(tableName string) (num int64) {
 }
 
 func InitDB() (err error) {
+	err = godotenv.Load() // 加载 .env 文件
+	if err != nil {
+		log.Fatalf("错误的加载 .env file")
+	}
+
 	var db *gorm.DB
 	if os.Getenv("SQL_DSN") != "" {
 		// Use MySQL
