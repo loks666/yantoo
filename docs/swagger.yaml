@@ -1,4 +1,32 @@
+definitions:
+  common.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
 info:
   contact: {}
-paths: {}
+paths:
+  /hello:
+    get:
+      consumes:
+      - application/json
+      description: Returns a greeting message
+      operationId: hello
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/common.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Hello endpoint
 swagger: "2.0"
